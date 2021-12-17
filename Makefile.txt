@@ -1,0 +1,19 @@
+
+
+CXX = g++
+CXXFLAGS = -Wall -std=c++11 
+
+OBJECTS = linkedList.o wordAnalyzer.o
+
+bard: $(OBJECTS)
+	$(CXX) -g $(CXXFLAGS) -o bard linkedList.o bard.o
+
+linkedList.o: linkedList.cpp linkedList.h
+	$(CXX) -g $(CXXFLAGS) -c linkedList.cpp
+	
+bard.o: linkedList.cpp linkedList.h wordAnalyzer.cpp
+	$(CXX) -g $(CXXFLAGS) -c wordAnalyzer.cpp
+
+clean: 
+	rm -f *.o
+	rm bard
